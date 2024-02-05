@@ -8,9 +8,17 @@ import FeedbackLists from "./components/FeedbackLists";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
+import Card from "./components/shared/Card";
+import Post from "./components/Post";
 
 // route start here
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  NavLink,
+} from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./components/AboutIconLink";
 
@@ -57,7 +65,17 @@ function App() {
             <Route path="/about" element={<AboutPage />}>
               This is about route
             </Route>
+            <Route path="/post/:id/:name" element={<Post />}></Route>
+            {/* <Card>
+              <NavLink to={"/"} activeClassName="active">
+                Home
+              </NavLink>
+              <NavLink to={"/about"} activeClassName="active">
+                About
+              </NavLink>
+            </Card> */}
           </Routes>
+
           <AboutIconLink />
         </div>
       </Router>
