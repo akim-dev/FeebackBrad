@@ -2,9 +2,9 @@ import propsType from "prop-types";
 
 function FeedbackStats({ feedback }) {
   // calculate rating avg
-  let avg = feedback.reduce((accumulator, cur) => {
-    return accumulator + cur.rating;
-  });
+  //   let avg = feedback.reduce((accumulator, cur) => {
+  //     return accumulator + cur.rating;
+  //   });
 
   return (
     <div className="feedback-stats">
