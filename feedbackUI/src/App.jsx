@@ -8,7 +8,7 @@ import FeedbackLists from "./components/FeedbackLists";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
-import Card from "./components/shared/Card";
+// import Card from "./components/shared/Card";
 import Post from "./components/Post";
 
 // route start here
@@ -22,22 +22,25 @@ import {
 import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./components/AboutIconLink";
 
+// using context start here
+import { FeedbackProvider } from "./context/FeedbackContext";
+
 function App() {
-  const [feedback, setFeedback] = useState(FeedbackData);
+  // const [feedback, setFeedback] = useState(FeedbackData);
 
-  const deleteFeedback = (id) => {
-    // console.log("delete", id);
-    if (window.confirm("Are you sure you want to delete?")) {
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
-  };
+  // const deleteFeedback = (id) => {
+  //   // console.log("delete", id);
+  //   if (window.confirm("Are you sure you want to delete?")) {
+  //     setFeedback(feedback.filter((item) => item.id !== id));
+  //   }
+  // };
 
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidV4();
-    setFeedback([newFeedback, ...feedback]);
-  };
+  // const addFeedback = (newFeedback) => {
+  //   newFeedback.id = uuidV4();
+  //   setFeedback([newFeedback, ...feedback]);
+  // };
   return (
-    <>
+    <FeedbackProvider>
       {/* <div className="container">
         <h1>MyApp</h1>
         <Header text={"Feedback UI"} />
@@ -53,11 +56,15 @@ function App() {
               path="/"
               element={
                 <>
-                  <FeedbackForm handleAdd={addFeedback} />
-                  <FeedbackStats feedback={feedback} />
+                  <FeedbackForm
+                  // handleAdd={addFeedback}
+                  />
+                  <FeedbackStats
+                  // feedback={feedback}
+                  />
                   <FeedbackLists
-                    feedback={feedback}
-                    handleDelete={deleteFeedback}
+                  // feedback={feedback}
+                  // handleDelete={deleteFeedback}
                   />
                 </>
               }
@@ -79,7 +86,7 @@ function App() {
           <AboutIconLink />
         </div>
       </Router>
-    </>
+    </FeedbackProvider>
   );
 }
 
